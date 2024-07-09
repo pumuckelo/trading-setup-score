@@ -1,0 +1,26 @@
+{
+  "extends": "@electron-toolkit/tsconfig/tsconfig.web.json",
+  "include": [
+    "src/renderer/floatingButton/src/env.d.ts",
+    "src/renderer/floatingButton/src/**/*",
+    "src/renderer/floatingButton/src/**/*.tsx",
+    "src/renderer/main/src/env.d.ts",
+    "src/renderer/main/src/**/*",
+    "src/renderer/main/src/**/*.tsx",
+    "src/preload/*.d.ts",
+    "src/shared/**/*",
+  ],
+  "compilerOptions": {
+    "composite": true,
+    "jsx": "react-jsx",
+    "baseUrl": ".",
+    "paths": {
+      "@shared/*": [
+        "src/shared/*"
+      ],
+      "@renderer/*": [
+        "src/renderer/*"
+      ]
+    }
+  }
+}

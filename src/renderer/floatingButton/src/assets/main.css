@@ -1,0 +1,26 @@
+@import './base.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+background: transparent;
+  user-select: none;
+  height: 100vh;
+  margin: 0;
+}
+
+
+
+#root {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: transparent
+}
+
