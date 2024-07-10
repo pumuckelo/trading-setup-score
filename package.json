@@ -1,6 +1,6 @@
 {
   "name": "trading-setup-score",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Helps you stick to your trading setup rules",
   "main": "./out/main/index.js",
   "author": "example.com",
