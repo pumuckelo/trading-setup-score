@@ -27,7 +27,7 @@ dependencies:
     specifier: ^10.4.19
     version: 10.4.19(postcss@8.4.38)
   electron-updater:
-    specifier: ^6.1.7
+    specifier: ^6.1.8
     version: 6.1.8
   postcss:
     specifier: ^8.4.38

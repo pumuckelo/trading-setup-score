@@ -1,10 +1,10 @@
-import { app, shell, BrowserWindow, ipcMain, screen, Tray, Menu } from 'electron'
+import { electronApp, is, optimizer } from '@electron-toolkit/utils'
+import { BrowserWindow, Menu, Tray, app, ipcMain, screen } from 'electron'
 import { join } from 'path'
-import { electronApp, optimizer, is } from '@electron-toolkit/utils'
-import icon from '../../resources/logo.png?asset'
+import { autoUpdater } from 'electron-updater'
 
-import trayIcon from '../../resources/logo2.png?asset'
 import { ipcCommands } from '@shared/ipcCommands'
+import trayIcon from '../../resources/logo2.png?asset'
 
 let floatingWindow: BrowserWindow
 let checklistWindow: BrowserWindow
@@ -118,6 +118,7 @@ const createChecklistWindow = () => {
 app.whenReady().then(() => {
   // Set app user model id for windows
   electronApp.setAppUserModelId('com.electron')
+  autoUpdater.checkForUpdatesAndNotify()
 
   // Default open or close DevTools by F12 in development
   // and ignore CommandOrControl + R in production.
