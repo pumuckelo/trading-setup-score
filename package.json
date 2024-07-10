@@ -13,7 +13,14 @@
         "owner": "pumuckelo",
         "repo": "trading-setup-score"
       }
-    ]
+    ],
+    "win": {
+      "target": [
+        "nsis",
+        "zip",
+        "exe"
+      ]
+    }
   },
   "scripts": {
     "format": "prettier --write .",
