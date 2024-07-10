@@ -16,9 +16,20 @@
     ],
     "win": {
       "target": [
-        "nsis",
-        "zip",
-        "exe"
+        {
+          "target": "nsis",
+          "arch": [
+            "x64",
+            "ia32"
+          ]
+        },
+        {
+          "target": "zip",
+          "arch": [
+            "x64",
+            "ia32"
+          ]
+        }
       ]
     }
   },
