@@ -32,7 +32,7 @@
     "build:win": "npm run build && electron-builder --win",
     "build:mac": "electron-vite build && electron-builder --mac",
     "build:linux": "electron-vite build && electron-builder --linux",
-    "release": "pnpm run bump:patch && electron-vite build && electron-builder --publish always --mac --win --linux"
+    "release": "pnpm run bump:patch && electron-vite build && electron-builder --publish always --mac --win"
   },
   "dependencies": {
     "@electron-toolkit/preload": "^3.0.0",
