@@ -6,6 +6,7 @@ import { ipcRenderer } from 'electron'
 import { ipcCommands } from '@shared/ipcCommands'
 import { useSettings } from '../../hooks/useSettings'
 import { Tracker } from '../Tracker'
+import { Quotes } from '../Quotes'
 
 const getGrade = (score) => {
   if (score >= 70) return { score: 'A+++', color: 'text-green-600' }
@@ -23,7 +24,7 @@ export interface ChecklistProps {
 }
 
 export const Checklist = ({ openSettings }: ChecklistProps) => {
-  const { scoreDict, showScore, showTracker } = useSettings()
+  const { scoreDict, showScore, showTracker, showQuotes } = useSettings()
 
   const [liquidityInternal, setLiquidityInternal] = useState(false)
   const [liquidity15M, setLiquidity15M] = useState(false)
@@ -204,6 +205,12 @@ export const Checklist = ({ openSettings }: ChecklistProps) => {
       {showTracker && (
         <div className="mt-4">
           <Tracker />
+        </div>
+      )}
+
+      {showQuotes && (
+        <div className="mt-4">
+          <Quotes />
         </div>
       )}
     </div>

@@ -19,11 +19,16 @@ export const useSettings = () => {
   const [scoreDict, setScoreDict] = useState(initialScoreDict)
   const [showScore, setShowScore] = useState(false)
   const [showTracker, setShowTracker] = useState(true)
+  const [showQuotes, setShowQuotes] = useState(true)
+  const [quotes, setQuotes] = useState<string[]>([])
+  const [unsavedQuotes, setUnsavedQuotes] = useState('')
 
   useEffect(() => {
     const storedScoreDict = localStorage.getItem('scoreDict')
     const storedShowScore = localStorage.getItem('showScore')
     const storedShowTracker = localStorage.getItem('showTracker')
+    const storedShowQuotes = localStorage.getItem('showQuotes')
+    const storedQuotes = localStorage.getItem('quotes')
 
     if (storedShowTracker !== null) {
       setShowTracker(JSON.parse(storedShowTracker))
@@ -36,18 +41,35 @@ export const useSettings = () => {
     if (storedShowScore !== null) {
       setShowScore(JSON.parse(storedShowScore))
     }
+
+    if (storedShowQuotes !== null) {
+      setShowQuotes(JSON.parse(storedShowQuotes))
+    }
+
+    if (storedQuotes !== null) {
+      setQuotes(JSON.parse(storedQuotes))
+      setUnsavedQuotes(JSON.parse(storedQuotes).join('; '))
+    }
   }, [])
 
   const saveSettings = () => {
     localStorage.setItem('scoreDict', JSON.stringify(scoreDict))
     localStorage.setItem('showScore', JSON.stringify(showScore))
     localStorage.setItem('showTracker', JSON.stringify(showTracker))
+    localStorage.setItem('showQuotes', JSON.stringify(showQuotes))
+
+    const updatedQuotes = unsavedQuotes.split(';').map((quote) => quote.trim())
+    localStorage.setItem('quotes', JSON.stringify(updatedQuotes))
+
+    setQuotes(updatedQuotes)
   }
 
   const resetSettings = () => {
     setScoreDict(initialScoreDict)
     setShowScore(false)
     setShowTracker(true)
+    setShowQuotes(true)
+    setQuotes([])
   }
 
   return {
@@ -58,6 +80,12 @@ export const useSettings = () => {
     saveSettings,
     resetSettings,
     setShowTracker,
-    showTracker
+    showTracker,
+    setShowQuotes,
+    showQuotes,
+    quotes,
+    setQuotes,
+    unsavedQuotes,
+    setUnsavedQuotes
   }
 }

@@ -16,6 +16,12 @@ export const Settings = ({ goBack }: SettingsProps) => {
     setShowScore,
     saveSettings,
     showTracker,
+    showQuotes,
+    setShowQuotes,
+    quotes,
+    unsavedQuotes,
+    setUnsavedQuotes,
+    setQuotes,
     setShowTracker
   } = useSettings()
 
@@ -33,6 +39,16 @@ export const Settings = ({ goBack }: SettingsProps) => {
 
   const handleToggleShowTracker = () => {
     setShowTracker(!showTracker)
+  }
+
+  const handleUpdateQuotes = (e) => {
+    const { value } = e.target
+
+    setUnsavedQuotes(value)
+  }
+
+  const hanldeToggleShowQuotes = () => {
+    setShowQuotes(!showQuotes)
   }
 
   const labels = {
@@ -71,6 +87,11 @@ export const Settings = ({ goBack }: SettingsProps) => {
           <label style={{ marginRight: '10px' }}>Show Trade Tracker:</label>
           <input type="checkbox" checked={showTracker} onChange={handleToggleShowTracker} />
         </div>
+        <div style={{ display: 'flex', alignItems: 'center', marginBottom: '10px' }}>
+          <label style={{ marginRight: '10px' }}>Show Quotes:</label>
+          <input type="checkbox" checked={showQuotes} onChange={hanldeToggleShowQuotes} />
+        </div>
+
         {Object.keys(scoreDict).map((key) => (
           <div
             key={key}
@@ -93,6 +114,20 @@ export const Settings = ({ goBack }: SettingsProps) => {
             />
           </div>
         ))}
+
+        <div>
+          <label className="mr-2" htmlFor="">
+            Quotes
+          </label>
+          <input
+            style={{ color: 'black', width: '100%' }}
+            type="text"
+            name="quotes"
+            value={unsavedQuotes}
+            placeholder="Be patient; Wait for your setup"
+            onChange={handleUpdateQuotes}
+          />
+        </div>
 
         <div className="flex-col flex gap-2 mt-2 items-stretch w-3/4 m-auto">
           <button
